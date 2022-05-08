@@ -33,7 +33,7 @@ function greetingCoordinates (dotsCoordinates: DotsCoordinates, dotsDimensions: 
   const xOffset = Math.round(
     Math.max((dotsDimensions.cols - TEXT_WIDTH) / 2 - TEXT_WIDTH, MIN_X_OFFSET)
   )
-  const yOffset = Math.round(Math.max((dotsDimensions.rows - TEXT_HEIGHT) * 0.35, MIN_Y_OFFSET))
+  const yOffset = Math.round(Math.max((dotsDimensions.rows - TEXT_HEIGHT) * 0.15, MIN_Y_OFFSET))
 
   const coordinates = []
 
@@ -227,6 +227,7 @@ export function handleDrawing (
     Animations.blinkingDots(5500, Infinity, 30),
   ]
 
+  console.log('handleDrawing')
   const fpsInterval = 1000 / FPS
   let lastDraw = Date.now()
   const startTime = lastDraw

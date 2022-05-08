@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Figma LCH Plugin",
+    "description": "A color picker plugin that introduces LCH color space into Figma.",
+    "freshness": 0.95,
+    "coolness": 0.8,
+    "technologies": ["TypeScript", "React", "webpack", "Figma API"],
+    "links": {
+      "main": "https://www.figma.com/community/plugin/969496279507778512/LCH",
+      "github": "https://lch.zisest.ru"
+    },
+    "cover": "/lch-cover.png"
+  },
+  {
+    "name": "Nutrition Helper",
+    "description": "Built on top of a neural network model, this app calculates human energy requirements with precision superior to that of existing methods.",
+    "freshness": 0.15,
+    "coolness": 0.7,
+    "technologies": ["React", "Django", "TensorFlow", "PostgreSQL"],
+    "links": {
+      "main": "https://nutrition.zisest.ru",
+      "github": "https://github.com/zisest/nutrition"
+    },
+    "cover": "/nutrition-cover.png"
+  },
+  {
+    "name": "Where Do I Sit?",
+    "description": "A prototype of a service that keeps track of available seats in suburban trains. Awarded 2nd place in Samsung's Internet of Things competition.",
+    "freshness": 0.1,
+    "coolness": 0.49,
+    "technologies": ["React", "Node.js", "MongoDB", "Yandex.Timetable API"],
+    "links": {
+      "main": "https://trains.zisest.ru",
+      "github": "https://github.com/zisest/where-do-i-sit"
+    },
+    "cover": "/trains-cover.png"
+  },
+  {
+    "name": "Yeelight Chrome",
+    "description": "This chrome extension allows you to connect to your Xiaomi Yeelight devices via LAN and control them using an intuitive user interface.",
+    "freshness": 0.3,
+    "coolness": 0.6,
+    "technologies": ["React", "Chrome Extensions API"],
+    "links": {
+      "github": "https://github.com/zisest/yeelight-chrome"
+    },
+    "cover": "/yeelight-cover.png"
+  }
+]

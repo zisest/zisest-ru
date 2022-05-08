@@ -1,6 +1,7 @@
-import { memo, useDeferredValue, useEffect, useRef } from 'react'
+import { memo, MutableRefObject, useDeferredValue, useEffect, useRef } from 'react'
 import { useCanvas } from '../../hooks/use-canvas.hook'
 import { useWindowResize } from '../../hooks/use-window-resize.hook'
+import { HEIGHT } from './CanvasBox.constants'
 import { getDotsCoordinates, drawDots, handleDrawing } from './CanvasBox.helpers'
 
 interface Props {
@@ -8,29 +9,27 @@ interface Props {
 }
 
 function CanvasBox ({ paused }: Props) {
-  const { innerWidth, innerHeight } = useWindowResize()
+  const { innerWidth } = useWindowResize()
   const width = useDeferredValue(Number(innerWidth))
-  const height = useDeferredValue(Number(innerHeight) / 2)
+  const height = HEIGHT
 
-  console.log('CanvasBox re-renders')
-
-  const { canvasRef, canvasProps, canvasBox, ctx } = useCanvas(width, height)
+  const { canvasRef, canvasProps, ctx } = useCanvas(width, height)
 
   const animationRef = useRef<number>(null)
 
   useEffect(() => {
     const [dotsCoordinates, dotsDimensions] = getDotsCoordinates(width, height)
 
-    if (ctx && canvasBox && dotsCoordinates && dotsDimensions) {
+    if (ctx && width && height && dotsCoordinates && dotsDimensions) {
       if (!paused) handleDrawing(ctx, width, height, dotsCoordinates, dotsDimensions, animationRef)
       else drawDots(ctx, width, height, dotsCoordinates)
     }
 
     return () => {
-      ctx?.clearRect(0, 0, canvasBox?.width ?? 0, canvasBox?.height ?? 0)
+      ctx?.clearRect(0, 0, width, height)
       if (animationRef.current != undefined) window.cancelAnimationFrame(animationRef.current)
     }
-  }, [ctx, canvasBox, width, height, paused])
+  }, [ctx, width, paused])
 
   return (
     <div className="bg-black relative overflow-hidden after:absolute after:inset-0 after:content-[''] after:bg-gradient-to-t after:to-transparent after:from-black">
