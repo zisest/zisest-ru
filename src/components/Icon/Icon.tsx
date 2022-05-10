@@ -6,9 +6,11 @@ import TelegramIcon from '../../assets/icon-telegram.svg'
 import MenuIcon from '../../assets/icon-menu.svg'
 import MailIcon from '../../assets/icon-mail.svg'
 import LinkIcon from '../../assets/icon-link.svg'
+import CVIcon from '../../assets/icon-cv.svg'
+import CVRuIcon from '../../assets/icon-cv-ru.svg'
 
 interface Props {
-  type: 'link' | 'github' | 'telegram' | 'linked-in' | 'menu' | 'mail'
+  type: 'link' | 'github' | 'telegram' | 'linked-in' | 'menu' | 'mail' | 'cv' | 'cv-ru'
   alt?: string
 }
 
@@ -20,6 +22,8 @@ function Icon ({ type, alt }: Props) {
     'linked-in': <LinkedInIcon aria-label={alt || type} />,
     menu: <MenuIcon aria-label={alt || type} />,
     mail: <MailIcon aria-label={alt || type} />,
+    cv: <CVIcon aria-label={alt || type} />,
+    'cv-ru': <CVRuIcon aria-label={alt || type} />,
   }[type]
 
   return (

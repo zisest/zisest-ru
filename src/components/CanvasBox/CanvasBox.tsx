@@ -29,7 +29,7 @@ function CanvasBox ({ paused }: Props) {
       ctx?.clearRect(0, 0, width, height)
       if (animationRef.current != undefined) window.cancelAnimationFrame(animationRef.current)
     }
-  }, [ctx, width, paused])
+  }, [ctx, width, paused, height])
 
   return (
     <div className="bg-black relative overflow-hidden after:absolute after:inset-0 after:content-[''] after:bg-gradient-to-t after:to-transparent after:from-black">

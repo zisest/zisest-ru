@@ -15,8 +15,8 @@ function Meter ({ value, label, minValue, maxValue, colorScheme }: Props) {
   const colorValue = value < 0.2 ? 0 : value < 0.5 ? 1 : value < 0.8 ? 2 : 3
 
   const colorClass = {
-    'brown-green': ['bg-orange-900', 'bg-orange-800', 'bg-lime-800', 'bg-emerald-600'],
-    'yellow-blue': ['bg-yellow-900', 'bg-yellow-800', 'bg-green-800', 'bg-cornflower-600'],
+    'brown-green': ['bg-orange-900', 'bg-orange-800', 'bg-emerald-700', 'bg-emerald-600'],
+    'yellow-blue': ['bg-yellow-900', 'bg-yellow-800', 'bg-cornflower-700', 'bg-cornflower-600'],
   }[colorScheme][colorValue]
 
   return (

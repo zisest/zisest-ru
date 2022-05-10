@@ -1,6 +1,13 @@
 import { MutableRefObject } from 'react'
 import { clamp, normalize, randomInteger } from '../../utils'
-import { CLEAR_RADIUS, FPS, INTERVAL, MAX_RADIUS } from './CanvasBox.constants'
+import {
+  CLEAR_RADIUS,
+  FPS,
+  INTERVAL,
+  MAX_RADIUS,
+  NEUTRAL_COLOR,
+  PRIMARY_COLOR,
+} from './CanvasBox.constants'
 
 export interface DrawFunction {
   from: number
@@ -79,7 +86,7 @@ export function getAnimations (
             ctx.beginPath()
             const radius = getRadius(rowNumber, dotsDimensions.rows - 1, MAX_RADIUS, elapsedPercent)
             ctx.arc(x, y, radius, 0, 2 * Math.PI)
-            ctx.fillStyle = 'rgb(26 26 26)'
+            ctx.fillStyle = NEUTRAL_COLOR
             ctx.fill()
             ctx.closePath()
           }
@@ -105,7 +112,7 @@ export function getAnimations (
             ctx.clearRect(x - CLEAR_RADIUS, y - CLEAR_RADIUS, CLEAR_RADIUS * 2, CLEAR_RADIUS * 2)
             ctx.beginPath()
             ctx.arc(x, y, MAX_RADIUS, 0, 2 * Math.PI)
-            ctx.fillStyle = 'rgba(26 26 26 / 1)'
+            ctx.fillStyle = NEUTRAL_COLOR
             ctx.fill()
             ctx.closePath()
 
@@ -117,7 +124,7 @@ export function getAnimations (
 
             const opacity = elapsedPercent < 0.3 ? show : elapsedPercent < 0.7 ? 1 : hide
 
-            ctx.fillStyle = `rgba(110 136 228 / ${opacity})`
+            ctx.fillStyle = `rgb(${PRIMARY_COLOR} / ${opacity})`
             ctx.fill()
             ctx.closePath()
           })
@@ -166,7 +173,7 @@ export function getAnimations (
 
         ctx.beginPath()
         ctx.arc(x, y, MAX_RADIUS, 0, 2 * Math.PI)
-        ctx.fillStyle = '#1A1A1A'
+        ctx.fillStyle = NEUTRAL_COLOR
         ctx.fill()
         ctx.closePath()
 
@@ -174,7 +181,7 @@ export function getAnimations (
         ctx.arc(x, y, MAX_RADIUS, 0, 2 * Math.PI)
         const progress = count / duration
         const opacity = progress < 0.5 ? progress : 1 - progress
-        ctx.fillStyle = `rgba(110 136 228 / ${opacity})`
+        ctx.fillStyle = `rgb(${PRIMARY_COLOR} / ${opacity})`
         ctx.fill()
         ctx.closePath()
       },
@@ -272,7 +279,7 @@ export function drawDots (
     for (const { x, y } of row) {
       context.beginPath()
       context.arc(x, y, MAX_RADIUS, 0, 2 * Math.PI)
-      context.fillStyle = 'rgb(26 26 26)'
+      context.fillStyle = NEUTRAL_COLOR
       context.fill()
       context.closePath()
     }

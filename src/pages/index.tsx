@@ -9,6 +9,7 @@ import ArrowSvg from '../assets/arrow.svg'
 import Icon from '../components/Icon'
 import Link from 'next/link'
 import Header from '../components/NavBar'
+import CustomLink from '../components/CustomLink'
 
 import { ProjectData } from '../types'
 
@@ -17,7 +18,14 @@ import fs from 'fs'
 import path from 'path'
 
 export function getStaticProps () {
-  const stringContents = fs.readFileSync(path.join(process.cwd(), 'projects', 'data.json'), 'utf-8')
+  const stringContents = fs.readFileSync(
+    path.join(process.cwd(), 'content', 'projects.json'),
+    'utf-8'
+  )
+  const seoDescription = fs.readFileSync(
+    path.join(process.cwd(), 'content', 'description.txt'),
+    'utf-8'
+  )
 
   let projectsData: ProjectData[]
   try {
@@ -26,6 +34,7 @@ export function getStaticProps () {
     return {
       props: {
         projectsData,
+        seoDescription,
       },
     }
   } catch (err) {
@@ -35,16 +44,17 @@ export function getStaticProps () {
 
 interface PageProps {
   projectsData: ProjectData[]
+  seoDescription: string
 }
 
-const Home: NextPage<PageProps> = ({ projectsData }) => {
+const Home: NextPage<PageProps> = ({ projectsData, seoDescription }) => {
   const [animationsPaused, toggleAnimationsPaused] = useReducer((prev) => !prev, false)
 
   return (
     <div className="bg-black">
       <Head>
-        <title>Title</title>
-        <meta name="description" content="Description" />
+        <title>Nikita Antonov — web developer</title>
+        <meta name="description" content={seoDescription} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="absolute">
@@ -65,10 +75,11 @@ const Home: NextPage<PageProps> = ({ projectsData }) => {
             <p className="text-zinc-300 max-w-2xl text-md py-2 text-justify font-sans">
               Hi! My name is Nikita and I&apos;m really into web development :) If you&apos;re here,
               you are either really interested in one of my projects (thanks!) or maybe considering
-              interviewing me for a job position? If you wish to get in touch, see{' '}
-              <Link href="#contact_me">
-                <a>contacts</a>
-              </Link>{' '}
+              interviewing me for a job position? If you wish to get in touch or check out my CV,
+              see{' '}
+              <CustomLink primary href="#contact_me">
+                contacts
+              </CustomLink>{' '}
               section.
             </p>
           </section>
@@ -98,23 +109,24 @@ const Home: NextPage<PageProps> = ({ projectsData }) => {
                 <li>JS</li>
                 <li>React</li>
                 <li>Next.js</li>
+                <li>Node.js</li>
                 <li className="opacity-50">Typescript</li>
+              </ul>
+              <ul className="p-4">
+                <li>Express</li>
+                <li>PostgreSQL</li>
+                <li>MongoDB</li>
+                <li>docker</li>
+                <li>nginx</li>
+                <li className="opacity-50">Django</li>
               </ul>
               <ul className="p-4">
                 <li>webpack</li>
                 <li>git</li>
                 <li>Jest</li>
                 <li>Storybook</li>
-                <li className="opacity-50">gulp</li>
-                <li className="opacity-50">Jira</li>
-              </ul>
-              <ul className="p-4">
-                <li>Node.js</li>
-                <li>PostgreSQL</li>
-                <li>MongoDB</li>
-                <li>docker</li>
-                <li>nginx</li>
-                <li className="opacity-50">Django</li>
+                <li>CI/CD Tools</li>
+                <li>Jira</li>
               </ul>
               <ul className="p-4">
                 <li className="opacity-50">Python</li>
@@ -138,10 +150,12 @@ const Home: NextPage<PageProps> = ({ projectsData }) => {
             </h3>
             <p className="text-zinc-300 max-w-2xl text-md py-2 text-justify">
               If you have any inquiries, the best way to reach me is either by e-mail (
-              <Link href="mailto:zisest@gmail.com">zisest@gmail.com</Link>) or by sending a Telegram
-              message :)
+              <CustomLink primary href="mailto:zisest@gmail.com">
+                zisest@gmail.com
+              </CustomLink>
+              ) or by sending a Telegram message :)
             </p>
-            <span className="flex gap-3 pt-2 justify-center">
+            <div className="flex gap-3 justify-center">
               <Link href="https://github.com/zisest">
                 <a>
                   <Icon type="github" alt="my GitHub page" />
@@ -162,7 +176,23 @@ const Home: NextPage<PageProps> = ({ projectsData }) => {
                   <Icon type="mail" alt="contact me via e-mail" />
                 </a>
               </Link>
-            </span>
+            </div>
+            <div className="flex gap-3 pt-2 justify-center">
+              <Link href="/antonov-cv.pdf">
+                <a>
+                  <Icon type="cv" alt="cv pdf" />
+                </a>
+              </Link>
+              <Link href="/antonov-cv-ru.pdf">
+                <a>
+                  <Icon type="cv-ru" alt="cv pdf (in Russian)" />
+                </a>
+              </Link>
+            </div>
+            <footer className="text-center text-md text-zinc-700 pt-5">
+              Code of the page is available on{' '}
+              <CustomLink href="https://github.com/zisest/zisest-ru">GitHub</CustomLink>
+            </footer>
           </section>
         </div>
       </main>
