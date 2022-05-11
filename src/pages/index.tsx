@@ -150,48 +150,42 @@ const Home: NextPage<PageProps> = ({ projectsData, seoDescription }) => {
             </h3>
             <p className="text-zinc-300 max-w-2xl text-md py-2 text-justify">
               If you have any inquiries, the best way to reach me is either by e-mail (
-              <CustomLink primary href="mailto:zisest@gmail.com">
+              <CustomLink newTab primary href="mailto:zisest@gmail.com">
                 zisest@gmail.com
               </CustomLink>
               ) or by sending a Telegram message :)
             </p>
             <div className="flex gap-3 justify-center">
-              <Link href="https://github.com/zisest">
-                <a>
-                  <Icon type="github" alt="my GitHub page" />
-                </a>
-              </Link>
-              <Link href="https://www.linkedin.com/in/nikita-antonov-7a142722b/">
-                <a>
-                  <Icon type="linked-in" alt="my LinkedIn profile" />
-                </a>
-              </Link>
-              <Link href="https://t.me/zisest">
-                <a>
-                  <Icon type="telegram" alt="message me in Telegram" />
-                </a>
-              </Link>
-              <Link href="mailto:zisest@gmail.com">
-                <a>
-                  <Icon type="mail" alt="contact me via e-mail" />
-                </a>
-              </Link>
+              <a target="_blank" href="https://github.com/zisest" rel="noreferrer">
+                <Icon type="github" alt="my GitHub page" />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/nikita-antonov-7a142722b/"
+                rel="noreferrer"
+              >
+                <Icon type="linked-in" alt="my LinkedIn profile" />
+              </a>
+              <a target="_blank" href="https://t.me/zisest" rel="noreferrer">
+                <Icon type="telegram" alt="message me in Telegram" />
+              </a>
+              <a target="_blank" href="mailto:zisest@gmail.com" rel="noreferrer">
+                <Icon type="mail" alt="contact me via e-mail" />
+              </a>
             </div>
             <div className="flex gap-3 pt-2 justify-center">
-              <Link href="/antonov-cv.pdf">
-                <a>
-                  <Icon type="cv" alt="cv pdf" />
-                </a>
-              </Link>
-              <Link href="/antonov-cv-ru.pdf">
-                <a>
-                  <Icon type="cv-ru" alt="cv pdf (in Russian)" />
-                </a>
-              </Link>
+              <a target="_blank" href="/antonov-cv.pdf" rel="noreferrer">
+                <Icon type="cv" alt="cv pdf" />
+              </a>
+              <a target="_blank" href="/antonov-cv-ru.pdf" rel="noreferrer">
+                <Icon type="cv-ru" alt="cv pdf (in Russian)" />
+              </a>
             </div>
             <footer className="text-center text-md text-zinc-700 pt-5">
               Code of the page is available on{' '}
-              <CustomLink href="https://github.com/zisest/zisest-ru">GitHub</CustomLink>
+              <CustomLink newTab href="https://github.com/zisest/zisest-ru">
+                GitHub
+              </CustomLink>
             </footer>
           </section>
         </div>

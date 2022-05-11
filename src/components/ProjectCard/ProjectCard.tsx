@@ -32,14 +32,14 @@ function ProjectCard ({
           <div className="flex gap-3 scale-75">
             {links.github && (
               <Link href={links.github}>
-                <a>
+                <a target="_blank" rel="noreferrer">
                   <Icon type="github" />
                 </a>
               </Link>
             )}
             {links.main && (
               <Link href={links.main}>
-                <a>
+                <a target="_blank" rel="noreferrer">
                   <Icon type="link" />
                 </a>
               </Link>
