@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /antonov-cv.pdf
+Disallow: /antonov-cv-ru.pdf
